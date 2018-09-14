@@ -3,7 +3,7 @@
 /**
  * main - Entry point
  *
- * Return: Always 0 (Success)
+ *Return: Always 0 (Success)
  */
 int main(void)
 {
@@ -12,9 +12,12 @@ int main(void)
 
 	for (n = '0'; n <= '9'; n++)
 	{
-		putchar(n);
-		if (n < '9')
+		for (i = '0'; i <= '9'; i++)
 		{
+			putchar(n);
+			putchar(i);
+			if (n == '9' && i == '9')
+				continue;
 			putchar(',');
 			putchar(' ');
 		}
