@@ -14,19 +14,29 @@ int main(void)
 
 	for (x = '0'; x <= '9'; x++)
 	{
-		for (y = '0'; y <= 8; y++)
+		for (y = '0'; y <= '8'; y++)
 		{
 			for (z = '0'; z <= '9'; z++)
 			{
 				for (n = '0'; n <= '9'; n++)
 				{
+					if (z == '0' && n == '0')
+					{
+						continue;
+					}
 					putchar(x);
 					putchar(y);
 					putchar(' ');
 					putchar(z);
-					if (x == y == z == '0')
-						continue;
 					putchar(n);
+					if (x == '9' || y == '8' || z == '9')
+						continue;
 					putchar(',');
 					putchar(' ');
-					
+				}
+			}
+		}
+	}
+	putchar('\n');
+	return (0);
+}
