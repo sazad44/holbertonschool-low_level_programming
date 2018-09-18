@@ -3,7 +3,8 @@
 /**
  * add - add two integers and return the result
  *
- * @n, @i: two variables that stand for the two integers to be added
+ * @n: variable holding place for one integer input
+ * @i: variable holding place for second integer input to be added
  * Return: the sum of two numbers
  */
 int add(int n, int i)
