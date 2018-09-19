@@ -14,7 +14,7 @@ int main(void)
 
 	i = 1;
 	j = 0;
-        for (n = 0; n < 49; n++)
+	for (n = 0; n < 49; n++)
 	{
 		k = i + j;
 		printf("%li", k);
