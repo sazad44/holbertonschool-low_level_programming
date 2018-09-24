@@ -7,42 +7,61 @@
  */
 void print_number(int n)
 {
-	int i;
+	int i, first;
 
 	i = 1;
 	if (n < 0)
 	{
 		_putchar('-');
-		n = -n;
+		n = -(n + 1);
 	}
 	else if (n == 0)
 	{
 		_putchar(n + '0');
 		return;
 	}
-	while ((n / i) != 0)
+	else
+		n = (n - 1);
+	first = (n % 10);
+	while ((n / i) > 9)
 	{
 		i *= 10;
 	}
-	while (((n % i) != 0) && (n != i))
+	while (i != 1)
 	{
-		if (n == (i / 10))
+		print_equal(n, i);
+		if (n != i)
 		{
-			i /= 10;
-			_putchar((n / i) + '0');
-			while (n != 1)
+			if (i > n)
+				_putchar('0');
+			else
 			{
-				n /= 10;
-				i /= 10;
-				_putchar((i % n) + '0');
+				_putchar((n / i) + '0');
+				n = (n % i);
 			}
-			return;
-		}
-		else
-		{
 			i /= 10;
-			_putchar((n / i) + '0');
-			n = (n % i);
 		}
+	}
+	_putchar((first + 1) + '0');
+}
+
+/**
+ * print_equal - if number is equal to divider then a different route is taken
+ * @n: an input from the print_number function to encourage continuity
+ * @i: an input from the print_number function to encourage continuity
+ * Return: no value
+ */
+void print_equal(int n, int i)
+{
+	if (n == i)
+	{
+		_putchar((n / i) + '0');
+		while (n != 1)
+		{
+			n /= 10;
+			i /= 10;
+			_putchar((i % n) + '0');
+		}
+		return;
 	}
 }
