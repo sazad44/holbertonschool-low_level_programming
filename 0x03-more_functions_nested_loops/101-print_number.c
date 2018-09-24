@@ -24,10 +24,25 @@ void print_number(int n)
 	{
 		i *= 10;
 	}
-	while ((n % i) != 0)
+	while (((n % i) != 0) && (n != i))
 	{
-		i /= 10;
-		_putchar((n / i) + '0');
-		n = (n % i);
+		if (n == (i / 10))
+		{
+			i /= 10;
+			_putchar((n / i) + '0');
+			while (n != 1)
+			{
+				n /= 10;
+				i /= 10;
+				_putchar((i % n) + '0');
+			}
+			return;
+		}
+		else
+		{
+			i /= 10;
+			_putchar((n / i) + '0');
+			n = (n % i);
+		}
 	}
 }
