@@ -29,12 +29,14 @@ void print_number(int n)
 	}
 	while (i != 1)
 	{
-		if (n == i)
+		if ((n + 1) == i)
 		{
+			n += 1;
 			_putchar((n / i) + '0');
-			while (n != 1)
+			while (i != 1)
 			{
-				n /= 10; i /= 10;
+				n /= 10;
+				i /= 10;
 				_putchar((i % n) + '0');
 			}
 			return;
