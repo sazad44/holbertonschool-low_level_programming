@@ -29,8 +29,17 @@ void print_number(int n)
 	}
 	while (i != 1)
 	{
-		print_equal(n, i);
-		if (n != i)
+		if (n == i)
+		{
+			_putchar((n / i) + '0');
+			while (n != 1)
+			{
+				n /= 10; i /= 10;
+				_putchar((i % n) + '0');
+			}
+			return;
+		}
+		else
 		{
 			if (i > n)
 				_putchar(((n / n) - 1) + '0');
@@ -50,7 +59,7 @@ void print_number(int n)
  * @n: an input from the print_number function to encourage continuity
  * @i: an input from the print_number function to encourage continuity
  * Return: no value
- */
+ *
 void print_equal(int n, int i)
 {
 	if (n == i)
@@ -65,3 +74,4 @@ void print_equal(int n, int i)
 		return;
 	}
 }
+*/
