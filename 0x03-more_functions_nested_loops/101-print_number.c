@@ -17,7 +17,7 @@ void print_number(int n)
 	}
 	else if (n == 0)
 	{
-		_putchar('0');
+		_putchar(n + '0');
 		_putchar('\n');
 		return;
 	}
