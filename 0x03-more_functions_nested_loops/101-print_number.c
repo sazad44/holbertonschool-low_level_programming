@@ -33,7 +33,7 @@ void print_number(int n)
 		if (n != i)
 		{
 			if (i > n)
-				_putchar('0');
+				_putchar(((n / n) - 1) + '0');
 			else
 			{
 				_putchar((n / i) + '0');
