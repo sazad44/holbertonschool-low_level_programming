@@ -7,4 +7,22 @@
  */
 void rev_string(char *s)
 {
-	
+	int i, n;
+	char first, temp;
+
+	i = 0;
+	while (*s)
+	{
+		n++;
+		s++;
+	}
+	while (i < n)
+	{
+		first = s[i];
+		temp = s[(n - 1)];
+		s[(n - 1)] = first;
+		s[i] = temp;
+		i++;
+		n--;
+	}
+}
