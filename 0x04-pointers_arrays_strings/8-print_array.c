@@ -8,15 +8,8 @@
  */
 void print_array(int *a, int n)
 {
-	int i, j;
+	int j;
 
-	i = 0;
-	while (a[i])
-	{
-		i++;
-	}
-	if ((i - 1) > n)
-		return;
 	n -= 1;
 	for (j = 0; j <= n; j++)
 	{
