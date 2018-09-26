@@ -17,19 +17,19 @@ int _atoi(char *s)
 			neg += 1;
 		}
 		if (s[n] >= '0' && s[n] <= '9')
-	       	{
-	       		res = res * 10 + (s[n] - '0');
-       			isnum = 1;
-       		}
-       		if (!(s[n] >= '0' && s[n] <= '9'))
-       		{
+		{
+			res = res * 10 + (s[n] - '0');
+			isnum = 1;
+		}
+		if (!(s[n] >= '0' && s[n] <= '9'))
+		{
 			if (isnum == 1)
 				isalpha = 1;
-       		}
+		}
 		if (isnum == 1 && isalpha == 1)
 			break;
 		n++;
-       	}
+	}
 	if (neg % 2 != 0)
 		res = -res;
 	return (res);
