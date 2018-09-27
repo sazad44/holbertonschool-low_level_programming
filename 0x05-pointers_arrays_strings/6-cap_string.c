@@ -26,7 +26,7 @@ char *cap_string(char *targ)
 			{
 				pup = 1;
 				if (!(targ[j + 1] <= 'z' && targ[j + 1] >= 'a'))
-				    pup = 0;
+					pup = 0;
 			}
 		}
 	}
