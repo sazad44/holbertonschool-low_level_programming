@@ -8,15 +8,17 @@
  */
 int _strcmp(char *s1, char *s2)
 {
-	int i = 0, j = 0, res = 15;
+	int i = 0, j = 0, res = 0, k = 0;
 
 	while (s1[i])
 		i++;
 	while (s2[j])
 		j++;
-	if (i == j)
-		res *= 0;
-	else if (i < j)
-		res *= -1;
+	while (res == 0 && (k < i && k < j))
+	{
+		if (s1[k] != s2[k])
+			res = s1[k] - s2[k];
+		k++;
+	}
 	return (res);
 }
