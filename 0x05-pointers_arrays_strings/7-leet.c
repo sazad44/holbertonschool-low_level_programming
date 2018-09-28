@@ -14,7 +14,7 @@ char *leet(char *targ)
 	{
 		for (j = 0; (targ[i] != alpha[j] && j < 10); j++)
 			;
-		if (targ[i] == alpha [j])
+		if (targ[i] == alpha[j])
 		{
 			j /= 2;
 			targ[i] = (num[j] + '0');
