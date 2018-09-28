@@ -16,7 +16,7 @@ char *rot13(char *targ)
 			;
 		if ((j < 26) && (targ[i] == alpha[j]))
 			targ[i] = (targ[i] + 13);
-		else
+		else if (targ[i] == alpha[j])
 			targ[i] = (targ[i] - 13);
 	}
 	return (targ);
