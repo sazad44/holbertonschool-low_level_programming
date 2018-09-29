@@ -7,13 +7,21 @@
  */
 int main(void)
 {
-	int i;
-	int j;
-	int k;
+	unsigned int i = 0, j = 0, k = 0;
 
 	i = 1;
 	j = 0;
 	while (k <= 4000000)
 	{
 		k = i + j;
-		if ((k % 2) == 0
+		if ((k % 2) == 0)
+		{
+			printf("%u", k);
+			if (k != 3524578)
+				printf(", ");
+		}
+		j = i;
+		i = k;
+	}
+	printf("\n");
+}
