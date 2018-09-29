@@ -10,13 +10,13 @@ int main(void)
 	unsigned long int i = 1, i2, j = 2, j2, k = 0, k2 = 0, count = 0;
 
 	printf("%lu, %lu, ", i, j);
-	for (; count < 95; count++)
+	for (; count < 96; count++)
 	{
 		if (count > 89)
 		{
 			i2 = (i % 1000000000), j2 = (j % 1000000000);
 			i = (i / 1000000000), j = (j / 1000000000);
-			for (; count < 95; count++)
+			for (; count < 96; count++)
 			{
 				k = (i + j);
 				k2 = (i2 + j2);
@@ -30,7 +30,7 @@ int main(void)
 				j = k;
 				i2 = j2;
 				j2 = k2;
-				if (count != 94)
+				if (count != 95)
 					printf(", ");
 			}
 		}
