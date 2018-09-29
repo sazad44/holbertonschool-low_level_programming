@@ -12,18 +12,18 @@ void print_number(int n)
 	if (n < 0)
 	{
 		_putchar('-');
-		n = -(n + 1);
+		n = (-(n + 1));
 	}
 	else
 		n = (n - 1);
 	first = (n % 10);
-	while (((n + 1) / i) > 9)
+	while ((n / i) > 9)
 		i *= 10;
-	while (i != 1)
+	while (i != 1 || n == 9)
 	{
-		if ((n + 1) == i)
+		if ((n + 1) == (i * 10))
 		{
-			n += 1,	_putchar((n / i) + '0');
+			n += 1, i *= 10, _putchar((n / i) + '0');
 			while (i != 1)
 				n /= 10, i /= 10, _putchar((i % n) + '0');
 			return;
