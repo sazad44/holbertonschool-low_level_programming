@@ -7,7 +7,7 @@
  */
 int main(void)
 {
-	unsigned int i = 0, j = 0, k = 0, total = 0;
+	unsigned int i = 0, j = 0, k = 0, total = 2;
 
 	i = 2;
 	j = 1;
