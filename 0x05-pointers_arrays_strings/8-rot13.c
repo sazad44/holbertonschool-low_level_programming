@@ -7,17 +7,16 @@
  */
 char *rot13(char *targ)
 {
-	int i = 0, j = 0;
-	char alpha[] = "ABCDEFGHIJKLMabcdefghijklmNOPQRSTUVWXYZnopqrstuvwxyz";
+	int i = 0, j = 0, neg = -1;
+	char alpha[] = "ANBOCPDQERFSGTHUIVJWKXLYMZanbocpdqerfsgthuivjwkxlymz";
 
-	for (; targ[i]; i++)
+	for (i = 0; targ[i]; i++)
 	{
+		neg = 1;
 		for (j = 0; targ[i] != alpha[j] && j < 52; j++)
-			;
-		if ((j < 26) && (targ[i] == alpha[j]))
-			targ[i] = (targ[i] + 13);
-		else if (targ[i] == alpha[j])
-			targ[i] = (targ[i] - 13);
+			neg = (neg * -1);
+		if (targ[i] == alpha[j])
+			targ[i] = (targ[i] + (13 * neg));
 	}
 	return (targ);
 }
