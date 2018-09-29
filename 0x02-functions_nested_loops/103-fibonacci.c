@@ -24,4 +24,5 @@ int main(void)
 		i = k;
 	}
 	printf("\n");
+	return (0);
 }
