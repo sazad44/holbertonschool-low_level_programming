@@ -7,38 +7,25 @@
  */
 void print_number(int n)
 {
-	int i, first;
+	int i = 1, first;
 
-	i = 1;
 	if (n < 0)
 	{
 		_putchar('-');
-		n = -(n + 1);
-	}
-	else if (n == 0)
-	{
-		_putchar(n + '0');
-		return;
+		n = (-(n + 1));
 	}
 	else
 		n = (n - 1);
 	first = (n % 10);
 	while ((n / i) > 9)
-	{
 		i *= 10;
-	}
-	while (i != 1)
+	while (i != 1 || n == 9)
 	{
-		if ((n + 1) == i)
+		if ((n + 1) == (i * 10))
 		{
-			n += 1;
-			_putchar((n / i) + '0');
+			n += 1, i *= 10, _putchar((n / i) + '0');
 			while (i != 1)
-			{
-				n /= 10;
-				i /= 10;
-				_putchar((i % n) + '0');
-			}
+				n /= 10, i /= 10, _putchar((i % n) + '0');
 			return;
 		}
 		else
@@ -53,5 +40,9 @@ void print_number(int n)
 			i /= 10;
 		}
 	}
-	_putchar((first + 1) + '0');
+	if (first < 9)
+		first += 1;
+	else
+		first = 0;
+	_putchar((first) + '0');
 }
