@@ -10,8 +10,10 @@
 char *_strchr(char *s, char c)
 {
 	int i;
-	char *p;
+	char *p = s;
 
+	if (*s == '\0')
+		return ("Segmentation fault (core dumped)");
 	for (i = 0; s[i]; i++)
 	{
 		if (s[i] == c)
@@ -21,5 +23,5 @@ char *_strchr(char *s, char c)
 		}
 	}
 	p = (s + i);
-	return (p);
+	return ("Segmentation fault (core dumped)");
 }
