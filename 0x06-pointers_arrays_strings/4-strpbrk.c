@@ -8,7 +8,7 @@
  */
 char *_strpbrk(char *s, char *accept)
 {
-	int i, j;
+	int i = 0, j = 0;
 	char *p;
 
 	for (i = 0; s[i]; i++)
@@ -22,6 +22,7 @@ char *_strpbrk(char *s, char *accept)
 			}
 		}
 	}
-	p = (s + i);
+	if (s[i] == '\0')
+		p = (s + i);
 	return (p);
 }
