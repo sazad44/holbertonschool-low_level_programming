@@ -22,7 +22,5 @@ char *_strpbrk(char *s, char *accept)
 			}
 		}
 	}
-	if (s[i] == '\0')
-		p = (s + i);
-	return (p);
+	return ((s + i));
 }
