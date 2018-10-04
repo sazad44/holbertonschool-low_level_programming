@@ -23,11 +23,9 @@ int is_pal_helper(char *s, int x, int len)
 {
 	if ((x / 2) != ((len - 1) / 2))
 	{
-		/* if ((x + 1) == (len - 1) && (s[x + 1] == s[len - 1]))
-		   return (1); */
 		if (s[x] != s[(len - 1)])
 			return (0);
-		else if (s[x + 1] == s[len -1])
+		else if (s[x + 1] == s[len - 1])
 			return (1);
 	}
 	else
