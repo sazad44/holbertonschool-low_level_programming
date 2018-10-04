@@ -126,4 +126,10 @@ int _sqrt_helper(int n, int x);
 int is_prime_number(int n);
 
 int is_prime_helper(int n, int x);
+
+int is_palindrome(char *s);
+
+int is_pal_helper(char *s, int x, int len);
+
+int measure(char *s);
 #endif
