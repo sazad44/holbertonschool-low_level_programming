@@ -9,7 +9,7 @@
  */
 int main(int argc, char *argv[])
 {
-	int n = 0, i = 0, ans = 0;
+	int n = 0, i = 0, j = 0, ans = 0;
 
 	if (argc == 1)
 	{
@@ -20,6 +20,14 @@ int main(int argc, char *argv[])
 	{
 		for (i = 1; i < argc; i++)
 		{
+			for (j = 0; *(argv[i] + j); j++)
+			{
+				if (!((*(argv[i] + j) >= '0') && (*(argv[i] + j) <= '9')))
+				{
+					printf("Error\n");
+					return (1);
+				}
+			}
 			if ((atoi(argv[i]) > 0) || (*argv[i] == '0'))
 			{
 				n = atoi(argv[i]);
