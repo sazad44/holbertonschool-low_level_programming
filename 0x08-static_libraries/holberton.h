@@ -132,4 +132,6 @@ int is_palindrome(char *s);
 int is_pal_helper(char *s, int x, int len);
 
 int measure(char *s);
+
+void _puts(char *s);
 #endif
