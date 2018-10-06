@@ -11,23 +11,26 @@ int main(int argc, char *argv[])
 {
 	int n = 0, i = 0, ans = 0;
 
-	for (; i < argc; i++)
-	{
-		if (*argv[i] >= '0' && *argv[i] <= '9')
-		{
-			n = atoi(argv[i]);
-			ans += n;
-		}
-		else
-		{
-			printf("Error\n");
-			return (1);
-		}
-	}
-	printf("%d\n", ans);
 	if (argc == 1)
 	{
 		ans = 0;
+		printf("%d\n", ans);
+	}
+	else
+	{
+		for (i = 1; i < argc; i++)
+		{
+			if (atoi(argv[i]))
+			{
+				n = atoi(argv[i]);
+				ans += n;
+			}
+			else
+			{
+				printf("Error\n");
+				return (1);
+			}
+		}
 		printf("%d\n", ans);
 	}
 	return (0);
