@@ -13,11 +13,9 @@ char *_strdup(char *str)
 
 	for (size = 0; str[size]; size++)
 		;
-	if (size == 0)
-		return (0);
 	p = malloc(sizeof(char) * size);
-	if (p == NULL)
-		return (p);
+	if (size == 0 || p == NULL)
+		return (0);
 	for (i = 0; i < size; i++)
 		p[i] = str[i];
 	return (p);
