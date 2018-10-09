@@ -11,8 +11,14 @@
 char *str_concat(char *s1, char *s2)
 {
 	char *p;
-	int i, sizes1 = _strlen(s1), sizes2 = _strlen(s2);
+	int i, sizes1, sizes2;
 
+	if (s1 == NULL)
+		s1 = "";
+	if (s2 == NULL)
+		s2 = "";
+	sizes1 = _strlen(s1);
+	sizes2 = _strlen(s2);
 	p = malloc(sizeof(char) * (sizes1 + sizes2));
 	if (p == NULL)
 		return (NULL);
@@ -30,7 +36,7 @@ char *str_concat(char *s1, char *s2)
 }
 
 /**
- * strlen - measure a string
+ * _strlen - measure a string
  * @s: string to be measured
  * Return: the length of the string
  */
