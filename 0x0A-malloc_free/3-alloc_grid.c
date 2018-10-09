@@ -22,7 +22,10 @@ int **alloc_grid(int width, int height)
 	{
 		mda[i] = malloc(sizeof(int) * width);
 		if (mda[i] == NULL)
+		{
+			free(mda);
 			return (NULL);
+		}
 		for (j = 0; j < width; j++)
 		{
 			mda[i][j] = 0;
