@@ -4,6 +4,7 @@
 /**
  * argstostr - concatenates all the arguments of your program
  * @ac: number of arguments
+ * @av: the arguments passed to the function
  * Return: character pointer to arguments of program
  */
 char *argstostr(int ac, char **av)
