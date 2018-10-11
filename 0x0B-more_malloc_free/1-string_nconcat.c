@@ -5,6 +5,7 @@
  * string_nconcat - concatenates two strings up to a number of bytes
  * @s1: the first string to lead the returned string
  * @s2: the string to be concatenated to s1
+ * @n: the number of bytes of string 2 to copy
  * Return: a pointer to the concatenated string
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
@@ -29,5 +30,6 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		ret[j++] = s1[i];
 	for (i = 0; i < count2; i++)
 		ret[j++] = s2[i];
+	ret [j] = '\0';
 	return (ret);
 }
