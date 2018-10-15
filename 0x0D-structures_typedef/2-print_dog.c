@@ -10,7 +10,7 @@
 void print_dog(Dog *d)
 {
 	if (d == NULL)
-		return;
+		printf("\n");
 	if (d->name == NULL)
 		d->name = "(nil)";
 	if (d->owner == NULL)
