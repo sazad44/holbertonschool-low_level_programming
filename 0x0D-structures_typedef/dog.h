@@ -12,4 +12,8 @@ struct dog
 	double age;
 	char *owner;
 };
+
+typedef struct dog Dog;
+
+void init_dog(Dog *d, char *name, float age, char *owner);
 #endif
