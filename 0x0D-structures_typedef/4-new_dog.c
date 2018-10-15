@@ -31,9 +31,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	own = malloc(sizeof(char) * (leno + 1));
 	if (nam == NULL || own == NULL)
 	{
-		free(ndog);
-		free(nam);
-		free(own);
+		free(ndog), free(nam), free(own);
 		return (NULL);
 	}
 	while (name[i])
