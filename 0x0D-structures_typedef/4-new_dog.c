@@ -11,14 +11,32 @@
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *ndog;
+	dog_t *ndog = {0};
 	char *nam, *own;
+	int i= 0, lenn = 0, leno = 0;;
 
-	nam = name;
-	own = owner;
+	while(name[i++])
+		lenn++;
+	i = 0;
+	while(owner[i++])
+		leno++;
+	i = 0;
+	nam = malloc(sizeof(char) * (lenn + 1));
+	own = malloc(sizeof(char) * (leno + 1));
 	ndog = malloc(sizeof(dog_t));
 	if (ndog == NULL)
 		return (NULL);
+	while(name[i])
+	{
+		nam[i] = name[i];
+		i++;
+	}
+	i = 0;
+	while(owner[i])
+	{
+		own[i] = owner[i];
+		i++;
+	}
 	ndog->name = nam;
 	ndog->age = age;
 	ndog->owner = own;
