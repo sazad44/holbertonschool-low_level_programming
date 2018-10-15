@@ -13,26 +13,26 @@ dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *ndog = {0};
 	char *nam, *own;
-	int i= 0, lenn = 0, leno = 0;;
+	int i = 0, lenn = 0, leno = 0;
 
-	while(name[i++])
+	while (name[i++])
 		lenn++;
 	i = 0;
-	while(owner[i++])
+	while (owner[i++])
 		leno++;
 	i = 0;
 	nam = malloc(sizeof(char) * (lenn + 1));
 	own = malloc(sizeof(char) * (leno + 1));
 	ndog = malloc(sizeof(dog_t));
-	if (ndog == NULL)
+	if (ndog == NULL || nam == NULL || own == NULL)
 		return (NULL);
-	while(name[i])
+	while (name[i])
 	{
 		nam[i] = name[i];
 		i++;
 	}
 	i = 0;
-	while(owner[i])
+	while (owner[i])
 	{
 		own[i] = owner[i];
 		i++;
