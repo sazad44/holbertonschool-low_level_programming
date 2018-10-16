@@ -7,7 +7,7 @@
  * @d: the structure to print
  * Return: no value
  */
-void print_dog(Dog *d)
+void print_dog(struct dog *d)
 {
 	if (d == NULL)
 		return;
