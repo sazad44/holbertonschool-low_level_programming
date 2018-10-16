@@ -9,11 +9,11 @@
  * @age: the age of the dog
  * @owner: the owner of the dog
  */
-void init_dog(Dog *d, char *name, float age, char *owner)
+void init_dog(struct dog *d, char *name, float age, char *owner)
 {
 	if (d == NULL)
 	{
-		d = malloc(sizeof(Dog));
+		d = malloc(sizeof(struct dog));
 		if (d == NULL)
 			return;
 	}
