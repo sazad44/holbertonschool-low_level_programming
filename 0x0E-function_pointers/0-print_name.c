@@ -13,5 +13,6 @@ void print_name(char *name, void (*f)(char *))
 	{
 		printf("\n");
 		return;
+	}
 	f(name);
 }
