@@ -9,7 +9,8 @@
  */
 int main(int argc, char **argv)
 {
-	int nofb;
+	int nofb, i;
+	int (*func)(int, char**) = main;
 
 	if (argc != 2)
 	{
@@ -24,5 +25,12 @@ int main(int argc, char **argv)
 		printf("Error\n");
 		exit(2);
 	}
+	for (i = 0; i < nofb; i++)
+	{
+		printf("%02x", *((unsigned char*)func + i));
+		if (i != (nofb - 1))
+			printf(" ");
+	}
+	printf("\n");
 	return (0);
 }
