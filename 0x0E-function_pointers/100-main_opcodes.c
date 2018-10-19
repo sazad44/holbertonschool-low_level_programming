@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 	}
 	for (i = 0; i < nofb; i++)
 	{
-		printf("%02x", *((unsigned char*)func + i));
+		printf("%02x", *((unsigned char *)func + i));
 		if (i != (nofb - 1))
 			printf(" ");
 	}
