@@ -7,7 +7,7 @@
  * @argv: an array of pointers pointing to the strings of arguments input
  * Return: Always 0 (Success)
  */
-int main(int argc, int **argv)
+int main(int argc, char **argv)
 {
 	int nofb;
 
@@ -16,12 +16,13 @@ int main(int argc, int **argv)
 		printf("Error\n");
 		exit(1);
 	}
-	nofb = *argv[1];
+	nofb = atoi(argv[1]);
+	if (nofb == 0)
+		return (1);
 	if (nofb < 0)
 	{
 		printf("Error\n");
 		exit(2);
 	}
-	printf("\n");
 	return (0);
 }
