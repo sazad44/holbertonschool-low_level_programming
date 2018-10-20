@@ -77,7 +77,7 @@ void print_all(const char * const format, ...)
 	};
 
 	va_start(elemtopr, format);
-	while (format[i])
+	while (format != NULL && format[i])
 	{
 		j = 0;
 		while (varray[j].c)
