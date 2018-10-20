@@ -5,7 +5,7 @@
 
 /**
  * print_numbers - prints numbers followed by a new line
- * @seperator: character pointer that points to the separator string
+ * @separator: character pointer that points to the separator string
  * @n: the number inputs to be printed
  * Return: No Value
  */
