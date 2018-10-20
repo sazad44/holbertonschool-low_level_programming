@@ -10,7 +10,7 @@
  */
 void prt_char(va_list ch)
 {
-	printf("%s", va_arg(ch, char *));
+	printf("%c", va_arg(ch, int));
 }
 
 /**
@@ -40,7 +40,13 @@ void prt_float(va_list fl)
  */
 void prt_str(va_list st)
 {
-        printf("%s", va_arg(st, char *));
+	char *sub;
+
+	sub = va_arg(st, char *);
+	if (sub == NULL)
+		printf("(nil)");
+	else
+		printf("%s", sub);
 }
 
 /**
@@ -48,15 +54,17 @@ void prt_str(va_list st)
  * @format: a pointer to a list of types being fed into the function
  * Return: No Value
  */
+
+typedef struct var
+{
+	char *c;
+	void (*prf)(va_list);
+}var;
+
 void print_all(const char * const format, ...)
 {
 	int i = 0, j = 0;
 	va_list elemtopr;
-	typedef struct var
-	{
-		char *c;
-		void (*prf)(va_list);
-	}var;
 	var varray[] = {
 		{"c", prt_char},
 		{"i", prt_int},
@@ -64,18 +72,21 @@ void print_all(const char * const format, ...)
 		{"s", prt_str},
 		{NULL, NULL}
 	};
+
 	va_start(elemtopr, format);
-	printf("hello");
 	while (format[i])
 	{
+		j = 0;
 		while (varray[j].c)
 		{
 			if (format[i] == *(varray[j].c))
-				printf("hello");
-				varray[j].prf(elemtopr + i);
+			{
+				varray[j].prf(elemtopr);
+				break;
+			}
 			j++;
 		}
-		if ((format + 1) != NULL)
+		if ((format[i + 1]) != '\0' && varray[j].c != NULL)
 			printf(", ");
 		i++;
 	}
