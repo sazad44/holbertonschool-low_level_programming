@@ -64,16 +64,15 @@ void print_all(const char * const format, ...)
 		{"s", prt_str},
 		{NULL, NULL}
 	};
-	void *sub;
 	va_start(elemtopr, format);
+	printf("hello");
 	while (format[i])
 	{
-		sub = va_arg(elemtopr, void *);
 		while (varray[j].c)
 		{
 			if (format[i] == *(varray[j].c))
 				printf("hello");
-				varray[j].prf(sub);
+				varray[j].prf(elemtopr + i);
 			j++;
 		}
 		if ((format + 1) != NULL)
