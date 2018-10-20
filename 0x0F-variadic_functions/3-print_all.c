@@ -1,13 +1,14 @@
+#include <stdarg.h>
 #include "variadic_functions.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdarg.h>
 
 /**
  * prt_char - prints a character pointed to by a va_list
  * @ch: the character to be printed
  * Return: No Value
  */
+
 void prt_char(va_list ch)
 {
 	printf("%c", va_arg(ch, int));
@@ -18,6 +19,7 @@ void prt_char(va_list ch)
  * @in: the integer to be printed
  * Return: No Value
  */
+
 void prt_int(va_list in)
 {
 	printf("%d", va_arg(in, int));
@@ -28,6 +30,7 @@ void prt_int(va_list in)
  * @fl: the float to be printed
  * Return: No Value
  */
+
 void prt_float(va_list fl)
 {
 	printf("%f", va_arg(fl, double));
@@ -38,15 +41,21 @@ void prt_float(va_list fl)
  * @st: the string to be printed
  * Return: No Value
  */
+
 void prt_str(va_list st)
 {
 	char *sub;
 
 	sub = va_arg(st, char *);
-	if (sub == NULL)
+	switch (!sub)
+	{
+	case 1:
 		printf("(nil)");
-	else
+		break;
+	default:
 		printf("%s", sub);
+		break;
+	}
 }
 
 /**

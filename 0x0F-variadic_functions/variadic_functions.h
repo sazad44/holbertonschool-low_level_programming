@@ -2,6 +2,7 @@
 #define VARIADIC_FUNCTIONS_H
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdarg.h>
 
 int sum_them_all(const unsigned int n, ...);
 
@@ -21,4 +22,5 @@ typedef struct var
 	char *c;
 	void (*prf)(va_list);
 } var;
+
 #endif
