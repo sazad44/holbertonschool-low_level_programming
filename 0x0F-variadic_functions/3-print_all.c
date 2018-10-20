@@ -30,7 +30,7 @@ void prt_int(va_list in)
  */
 void prt_float(va_list fl)
 {
-        printf("%f", va_arg(fl, double));
+	printf("%f", va_arg(fl, double));
 }
 
 /**
@@ -54,12 +54,6 @@ void prt_str(va_list st)
  * @format: a pointer to a list of types being fed into the function
  * Return: No Value
  */
-
-typedef struct var
-{
-	char *c;
-	void (*prf)(va_list);
-}var;
 
 void print_all(const char * const format, ...)
 {
