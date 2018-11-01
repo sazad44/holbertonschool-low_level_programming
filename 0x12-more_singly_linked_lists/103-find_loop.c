@@ -13,6 +13,8 @@ listint_t *find_listint_loop(listint_t *head)
 		return (NULL);
 	for (; head;)
 	{
+		if (head->next == NULL)
+			return (NULL);
 		pdiff = head - head->next;
 		if (pdiff > 0)
 			head = head->next;
