@@ -7,35 +7,22 @@
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	int num;
-	const listint_t *temp = head, *temp2 = head, *temp3 = head;
+	int pdiff, count, a;
 
 	if (head == NULL)
 		return (0);
-	for (num = 0; head; num++)
+	for (count = 0; head; count++)
 	{
-		temp2 = temp2->next;
-		while (temp2)
-		{
-			if (temp2 == temp)
-			{
-				temp2 = temp3;
-				while (temp != temp2)
-				{
-					temp2 = temp2->next;
-					temp2 = temp2->next;
-					temp = temp->next;
-				}
-				printf("-> [%p] %d\n", (void *)temp, temp->n);
-				return (num);
-			}
-			temp2 = temp2->next;
-			if (temp2)
-				temp2 = temp2->next;
-			temp = temp->next;
-		}
+		pdiff = head - head->next;
 		printf("[%p] %d\n", (void *)head, head->n);
-		head = head->next;
+		if (pdiff > 0)
+			head = head->next;
+		else
+		{
+			a = (head->next)->n;
+			printf("-> [%p] %d\n", (void *)head->next, a);
+			break;
+		}
 	}
-	return (num);
+	return (count);
 }
