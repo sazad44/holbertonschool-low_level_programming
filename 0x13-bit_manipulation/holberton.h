@@ -13,4 +13,6 @@ int _putchar(char c);
 int bin_help(unsigned long int n, unsigned long int sub);
 
 int get_bit(unsigned long int n, unsigned int index);
+
+int set_bit(unsigned long int *n, unsigned int index);
 #endif
