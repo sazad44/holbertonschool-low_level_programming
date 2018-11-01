@@ -13,9 +13,9 @@ listint_t *find_listint_loop(listint_t *head)
 		return (NULL);
 	for (; head;)
 	{
-		if (head->next == NULL)
-			return (NULL);
 		pdiff = head - head->next;
+		if (head->next == NULL)
+			pdiff = (long int)head;
 		if (pdiff > 0)
 			head = head->next;
 		else
