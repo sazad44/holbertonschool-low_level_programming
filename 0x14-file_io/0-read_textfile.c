@@ -16,14 +16,14 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (filename == NULL || letters == 0)
 		return (0);
 	fd = open(filename, O_RDONLY);
-	if (fd == -1)
+	if (fd < 0)
 		return (0);
 	numread = read(fd, buf, letters);
-	if (numread == -1)
+	if (numread < 0)
 		return (0);
 	buf[letters] = '\0';
-	numwrit = write(1, buf, numread);
-	if (numwrit == -1 || numwrit != numread)
+	numwrit = write(STDOUT_FILENO, buf, numread);
+	if (numwrit <= 0)
 		return (0);
 	close(fd);
 	free(buf);
