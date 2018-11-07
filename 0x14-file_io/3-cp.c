@@ -58,17 +58,17 @@ int main(int argc, char *argv[])
 		{
 			cl1 = close(fd1), close_check(cl1, fd1, buf, argc);
 			cl2 = close(fd2), close_check(cl2, fd2, buf, argc);
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+			exit(98);
 		}
 		wr = write(fd2, buf, rd);
 		if (wr < 0)
 		{
-			free(buf);
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-			exit(99);
+			free(buf), exit(99);
 		}
 	} while (rd == 1024);
 	cl1 = close(fd1), close_check(cl1, fd1, buf, argc);
-	cl2 = close(fd2), close_check(cl2, fd2, buf, argc);
-	free(buf);
+	cl2 = close(fd2), close_check(cl2, fd2, buf, argc), free(buf);
 	return (0);
 }
