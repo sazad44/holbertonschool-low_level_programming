@@ -6,7 +6,7 @@
  * @fd: the file descriptor to be output
  * Return: No Value
  */
-int close_check(int cl, int fd)
+void close_check(int cl, int fd)
 {
 	if (cl < 0)
 	{
