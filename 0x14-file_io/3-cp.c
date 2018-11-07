@@ -23,7 +23,7 @@ void close_check(int cl, int fd)
  */
 int main(int argc, char *argv[])
 {
-	int i, fd1, fd2, cl1, cl2, rd;
+	int wr, i, fd1, fd2, cl1, cl2, rd;
 	char *buf;
 
 	if (argc != 3)
@@ -48,14 +48,14 @@ int main(int argc, char *argv[])
 		rd = read(fd1, buf, 1024);
 		if (rd < 0)
 		{
-			cl1 = close(fd1);
-			close_check(cl1, fd1);
-			cl2 = close(fd2);
-			close_check(cl2, fd2);
+			cl1 = close(fd1), close_check(cl1, fd1);
+			cl2 = close(fd2), close_check(cl2, fd2);
 			free(buf);
 			return (-1);
 		}
-		dprintf(fd2, "%s", buf);
+		wr = write(fd2, buf, rd);
+		if (wr < 0)
+			printf("Error: Can't write to %s\n", argv[2]);
 		for (i = 0; buf[i]; i++)
 			buf[i] = '\0';
 	} while (rd == 1024);
