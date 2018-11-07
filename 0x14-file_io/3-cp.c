@@ -1,6 +1,21 @@
 #include "holberton.h"
 
 /**
+ * close_check - checks if something can be closed and conducts correct actions
+ * @cl: the output of close
+ * @fd: the file descriptor to be output
+ * Return: No Value
+ */
+int close_check(int cl, int fd)
+{
+	if (cl < 0)
+	{
+		printf("Error: Can't close fd %d\n", fd);
+		exit(100);
+	}
+}
+
+/**
  * main - Entry point
  * @argc: the number of arguments provided to the program
  * @argv: a pointer to an array of pointers that point to the arguments
@@ -29,30 +44,23 @@ int main(int argc, char *argv[])
 		printf("Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
-	do
-	{
+	do {
 		rd = read(fd1, buf, 1024);
 		if (rd < 0)
 		{
-			close(fd1);
-			close(fd2);
+			cl1 = close(fd1);
+			close_check(cl1, fd1);
+			cl2 = close(fd2);
+			close_check(cl2, fd2);
 			free(buf);
 			return (-1);
 		}
-		dprintf(fd2, "%s", buf);
 	} while (rd == 1024);
+	dprintf(fd2, "%s", buf);
 	free(buf);
 	cl1 = close(fd1);
-	if (cl1 < 0)
-	{
-		printf("Error: Can't close fd %d\n", fd1);
-		exit(100);
-	}
+	close_check(cl1, fd1);
 	cl2 = close(fd2);
-	if (cl2 < 0)
-	{
-		printf("Error: Can't close fd %d\n", fd2);
-		exit(100);
-	}
+	close_check(cl2, fd2);
 	return (1);
 }
