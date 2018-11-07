@@ -23,7 +23,7 @@ void close_check(int cl, int fd)
  */
 int main(int argc, char *argv[])
 {
-	int fd1, fd2, cl1, cl2, rd;
+	int i, fd1, fd2, cl1, cl2, rd;
 	char *buf;
 
 	if (argc != 3)
@@ -55,8 +55,10 @@ int main(int argc, char *argv[])
 			free(buf);
 			return (-1);
 		}
+		dprintf(fd2, "%s", buf);
+		for (i = 0; buf[i]; i++)
+			buf[i] = '\0';
 	} while (rd == 1024);
-	dprintf(fd2, "%s", buf);
 	free(buf);
 	cl1 = close(fd1);
 	close_check(cl1, fd1);
