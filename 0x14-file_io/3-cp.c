@@ -4,12 +4,14 @@
  * close_check - checks if something can be closed and conducts correct actions
  * @cl: the output of close
  * @fd: the file descriptor to be output
+ * @buf: the buffer to be freed
  * Return: No Value
  */
-void close_check(int cl, int fd)
+void close_check(int cl, int fd, char *buf)
 {
 	if (cl < 0)
 	{
+		free(buf);
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 		exit(100);
 	}
@@ -31,36 +33,36 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	buf = malloc(sizeof(char) * 1024);
+	buf = malloc(sizeof(char) * (1024));
 	fd1 = open(argv[1], O_RDONLY);
 	if (fd1 < 0)
 	{
+		free(buf);
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-	fd2 = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	fd2 = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, 00664);
 	if (fd2 < 0)
 	{
+		free(buf);
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
 	do {
+		for (i = 0; i < 1024; i++)
+			buf[i] = '\0';
 		rd = read(fd1, buf, 1024);
 		if (rd < 0)
 		{
-			cl1 = close(fd1), close_check(cl1, fd1);
-			cl2 = close(fd2), close_check(cl2, fd2);
-			free(buf);
-			return (-1);
+			cl1 = close(fd1), close_check(cl1, fd1, buf);
+			cl2 = close(fd2), close_check(cl2, fd2, buf);
 		}
 		wr = write(fd2, buf, rd);
 		if (wr < 0)
 			printf("Error: Can't write to %s\n", argv[2]);
-		for (i = 0; buf[i]; i++)
-			buf[i] = '\0';
 	} while (rd == 1024);
+	cl1 = close(fd1), close_check(cl1, fd1, buf);
+	cl2 = close(fd2), close_check(cl2, fd2, buf);
 	free(buf);
-	cl1 = close(fd1), close_check(cl1, fd1);
-	cl2 = close(fd2), close_check(cl2, fd2);
-	return (1);
+	return (0);
 }
