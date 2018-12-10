@@ -48,4 +48,8 @@ void print_square(int size);
 void print_triangle(int size);
 
 void print_number(int n);
+
+void increase(int n, int i);
+
+void divide(int n, int i);
 #endif
