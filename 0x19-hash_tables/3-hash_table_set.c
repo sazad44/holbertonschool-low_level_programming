@@ -12,11 +12,11 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	unsigned int ofs = 0;
 	hash_node_t *new_node = NULL;
 
-	if (!strcmp(key, ""))
+	if (!key || !strcmp(key, ""))
 		return (0);
 	ofs = (hash_djb2((const unsigned char *)key) % ht->size);
 	new_node = malloc(sizeof(hash_node_t));
-	if (new_node == NULL)
+	if (new_node == NULL || !ht || !value)
 		return (0);
 	new_node->key = strdup(key);
 	new_node->value = strdup(value);
