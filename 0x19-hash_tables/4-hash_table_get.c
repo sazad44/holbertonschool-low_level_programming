@@ -8,16 +8,19 @@
  */
 char *hash_table_get(const hash_table_t *ht, const char *key)
 {
+	hash_node_t *temp = NULL;
 	unsigned int ofs = 0;
 	char *comp;
 	char *ret = NULL;
 
+	if (!ht || !key || !strcmp("", key))
+		return (NULL);
 	ofs = hash_djb2((const unsigned char *)key) % ht->size;
 	if (ht->array[ofs])
 		comp = ht->array[ofs]->key;
 	else
 		return (NULL);
-	while (1)
+	for (temp = ht->array[ofs]; temp; temp = temp->next)
 	{
 		if (!strcmp(key, comp))
 		{
