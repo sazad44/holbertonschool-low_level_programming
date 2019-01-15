@@ -30,7 +30,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	new_node->next = NULL;
 	if (ht->array[ofs])
 	{
-	        temp = ht->array[ofs];
+		temp = ht->array[ofs];
 		ht->array[ofs] = new_node;
 		ht->array[ofs]->next = temp;
 	}
