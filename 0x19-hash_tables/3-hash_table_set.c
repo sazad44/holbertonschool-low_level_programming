@@ -19,12 +19,12 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	new_node->key = (char *)key;
 	new_node->value = (char *)value;
 	new_node->next = NULL;
-	if ((*(ht->array)) && (*(ht->array) + ofs)->value)
+	if (ht->array[ofs] && ht->array[ofs]->value)
 	{
-		new_node->next = (*(ht->array));
-		(*(ht->array)) = new_node;
+		new_node->next = ht->array[ofs];
+		ht->array[ofs] = new_node;
 	}
 	else
-		*((ht->array) + ofs) = new_node;
+		ht->array[ofs] = new_node;
 	return (1);
 }
