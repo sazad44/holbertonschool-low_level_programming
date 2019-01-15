@@ -17,7 +17,7 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 		comp = ht->array[ofs]->key;
 	else
 		return (NULL);
-	while(1)
+	while (1)
 	{
 		if (!strcmp(key, comp))
 		{
