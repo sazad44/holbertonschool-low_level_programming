@@ -10,6 +10,8 @@ void shell_sort(int *array, size_t size)
 {
 	size_t intvl = 1, i;
 
+	if (!array || size < 2)
+		return;
 	for (i = 0; i < size; i = ((i * 3) + 1))
 	{
 		if (i < size)
@@ -21,6 +23,7 @@ void shell_sort(int *array, size_t size)
 		{
 			shell_swap(array, i, size, intvl);
 		}
+		printf("%lu\n", intvl);
 		print_array(array, size);
 	}
 }
