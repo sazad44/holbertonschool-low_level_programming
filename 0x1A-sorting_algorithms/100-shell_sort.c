@@ -23,7 +23,6 @@ void shell_sort(int *array, size_t size)
 		{
 			shell_swap(array, i, size, intvl);
 		}
-		printf("%lu\n", intvl);
 		print_array(array, size);
 	}
 }
