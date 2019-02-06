@@ -13,6 +13,13 @@ void quick_sort(int *array, size_t size)
 	q_sort(array, 0, size - 1, size);
 }
 
+/**
+ * q_sort - recursion function with more parameters to sort
+ * @array: a pointer to the first element of the array
+ * @low: bottom index of partition
+ * @high: top index of partition
+ * @size: size of the array
+ */
 void q_sort(int *array, int low, int high, size_t size)
 {
 	int piv;
@@ -38,21 +45,21 @@ int partition(int *array, int low, int high, size_t size)
 	int i, j, tmp, piv;
 
 	piv = array[high];
-        for (j = low, i = low - 1; j < high; j++)
-        {
-                if (array[j] < piv)
-                {
-                        i++;
-                        tmp = array[i];
-                        array[i] = array[j];
-                        array[j] = tmp;
+	for (j = low, i = low - 1; j < high; j++)
+	{
+		if (array[j] < piv)
+		{
+			i++;
+			tmp = array[i];
+			array[i] = array[j];
+			array[j] = tmp;
 			if (i != j)
 				print_array(array, size);
-                }
-        }
-        tmp = array[i + 1];
-        array[i + 1] = piv;
-        array[high] = tmp;
+		}
+	}
+	tmp = array[i + 1];
+	array[i + 1] = piv;
+	array[high] = tmp;
 	if (i + 1 != high)
 		print_array(array, size);
 	return (i + 1);
