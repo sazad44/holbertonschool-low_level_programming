@@ -17,7 +17,6 @@ void shell_sort(int *array, size_t size)
 	}
 	for (; intvl >= 1; intvl = ((intvl - 1) / 3))
 	{
-		printf("%lu\n", intvl);
 		for (i = 0; i < size; i++)
 		{
 			shell_swap(array, i, size, intvl);
