@@ -8,15 +8,21 @@
  */
 void quick_sort(int *array, size_t size)
 {
-	size_t i;
-	int tmp, piv;
-
-	if (size == 1)
+	if (!array)
 		return;
-	for (i = 0; 
-	piv = partition(array, 0, size, size);
-	quick_sort(array, piv);
-	quick_sort(array + piv, size - piv);
+	q_sort(array, 0, size - 1, size);
+}
+
+void q_sort(int *array, int low, int high, size_t size)
+{
+	int piv;
+
+	if (low < high)
+	{
+		piv = partition(array, low, high, size);
+		q_sort(array, low, piv - 1, size);
+		q_sort(array, piv + 1, high, size);
+	}
 }
 
 /**
@@ -29,24 +35,25 @@ void quick_sort(int *array, size_t size)
  */
 int partition(int *array, int low, int high, size_t size)
 {
-	size_t i, j;
-	int piv;
+	int i, j, tmp, piv;
 
 	piv = array[high];
-        for (j = low, i = low; j < (high - 1); j++)
+        for (j = low, i = low - 1; j < high; j++)
         {
-                if (array[j] <= piv)
+                if (array[j] < piv)
                 {
+                        i++;
                         tmp = array[i];
                         array[i] = array[j];
                         array[j] = tmp;
-                        i++;
-                        print_array(array, size);
+			if (i != j)
+				print_array(array, size);
                 }
         }
-        tmp = array[i];
-        array[i] = piv;
-        array[j] = tmp;
-        print_array(array, size);
-	return (i);
+        tmp = array[i + 1];
+        array[i + 1] = piv;
+        array[high] = tmp;
+	if (i + 1 != high)
+		print_array(array, size);
+	return (i + 1);
 }
