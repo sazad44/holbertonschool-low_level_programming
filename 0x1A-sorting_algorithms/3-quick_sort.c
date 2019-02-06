@@ -53,14 +53,14 @@ int partition(int *array, int low, int high, size_t size)
 			tmp = array[i];
 			array[i] = array[j];
 			array[j] = tmp;
-			if (i != j)
+			if (array[i] != array[j])
 				print_array(array, size);
 		}
 	}
 	tmp = array[i + 1];
 	array[i + 1] = piv;
 	array[high] = tmp;
-	if (i + 1 != high)
+	if (array[high] != array[i + 1])
 		print_array(array, size);
 	return (i + 1);
 }
