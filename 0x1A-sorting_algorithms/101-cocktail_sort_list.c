@@ -10,7 +10,7 @@ void cocktail_sort_list(listint_t **list)
 	unsigned char flag = 1;
 	listint_t *curr, *curr2;
 
-	if (!list || !((*list)->next))
+	if (!list || !(*list) || !((*list)->next))
 		return;
 	while (flag)
 	{
@@ -21,6 +21,8 @@ void cocktail_sort_list(listint_t **list)
 			{
 				flag = 1;
 				cocktail_node_swap(&curr, 0);
+				if (!curr->prev->prev)
+					*list = curr->prev;
 				print_list(*list);
 			}
 			if (curr->next == NULL)
@@ -61,7 +63,8 @@ void cocktail_node_swap(listint_t **curr, unsigned char mode)
 		tmp->prev = *curr;
 		(*curr)->next = tmp;
 		(*curr)->prev = ptmp;
-		ptmp->next = *curr;
+		if (ptmp)
+			ptmp->next = *curr;
 		*curr = tmp;
 	}
 	else if (mode == 1)
@@ -75,7 +78,8 @@ void cocktail_node_swap(listint_t **curr, unsigned char mode)
 		tmp->next = *curr;
 		(*curr)->prev = tmp;
 		(*curr)->next = ptmp;
-		ptmp->prev = *curr;
+		if (ptmp)
+			ptmp->prev = *curr;
 		*curr = tmp;
 	}
 }
