@@ -29,5 +29,6 @@ int partition(int *array, int low, int high, size_t size);
 void shell_sort(int *array, size_t size);
 void shell_swap(int *array, size_t idx, size_t size, size_t intvl);
 void cocktail_sort_list(listint_t **list);
+void cocktail_node_swap(listint_t **curr, unsigned char mode);
 
 #endif
