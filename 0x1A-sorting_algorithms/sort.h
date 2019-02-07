@@ -33,5 +33,9 @@ void cocktail_node_swap(listint_t **curr, unsigned char mode);
 void quick_sort_hoare(int *array, size_t size);
 void q_sort_hoare(int *array, int low, int high, size_t size);
 int partition_hoare(int *array, int low, int high, size_t size);
+void merge_sort(int *array, size_t size);
+void top_down_merge_sort(int *a, int beg, unsigned int end);
+void top_down_merge(int *a, int beg, unsigned int split, unsigned int end);
+void merge_swap(int *a, int *b);
 
 #endif
