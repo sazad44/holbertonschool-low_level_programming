@@ -37,5 +37,7 @@ void merge_sort(int *array, size_t size);
 void top_down_merge_sort(int *a, int beg, unsigned int end);
 void top_down_merge(int *a, int beg, unsigned int split, unsigned int end);
 void merge_swap(int *a, int *b);
+void counting_sort(int *array, size_t size);
+int *counting_array(int *array, size_t k, size_t size);
 
 #endif
