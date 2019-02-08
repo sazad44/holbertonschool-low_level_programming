@@ -64,13 +64,11 @@ void top_down_merge(int *a, int beg, unsigned int split, unsigned int end)
 		if (i < split)
 		{
 			if (a[i] > a[j])
-				merge_swap(a + i, a + j), j -= 1;
-		}
+				merge_swap(a + i, a + j), j -= 1; }
 		else
 		{
 			if (i > split)
-				i = beg;
-		}
+				i = beg; }
 		for (k = beg; k < end; k++)
 			if (k > (unsigned int)beg && a[k] < a[k - 1])
 				merge_swap(a + k, a + (k - 1));
