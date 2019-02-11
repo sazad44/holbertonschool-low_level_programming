@@ -42,7 +42,7 @@ void top_down_merge_sort(int *a, int beg, unsigned int end)
  */
 void top_down_merge(int *a, int beg, unsigned int split, unsigned int end)
 {
-	unsigned int i, j;
+	unsigned int i, j, k;
 
 	printf("Merging...\n[left]: ");
 	for (i = beg; i < split; i++)
@@ -64,15 +64,14 @@ void top_down_merge(int *a, int beg, unsigned int split, unsigned int end)
 		if (i < split)
 		{
 			if (a[i] > a[j])
-				merge_swap(a + i, a + j), j -= 1;
-		}
+				merge_swap(a + i, a + j), j -= 1; }
 		else
 		{
 			if (i > split)
-				i = beg;
-			if (a[j] < a[j - 1])
-				merge_swap(a + j, a + (j - 1));
-		}
+				i = beg; }
+		for (k = beg; k < end; k++)
+			if (k > (unsigned int)beg && a[k] < a[k - 1])
+				merge_swap(a + k, a + (k - 1));
 	}
 	if (a[split] < a[split - 1])
 		merge_swap(a + split, a + (split - 1));
