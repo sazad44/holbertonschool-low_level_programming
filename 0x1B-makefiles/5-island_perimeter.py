@@ -11,20 +11,23 @@ def island_perimeter(grid):
         if type(grid[i]) != list:
             return 0
         for j in range(len(grid[i])):
+            if type(grid[i][j]) != int:
+                return 0
             if grid[i][j] == 1:
                 per += per_check(grid, i, j)
     return per
+
 
 def per_check(grid, i, j):
     """per_check function"""
     per = 0
     try:
-        if grid[i][j - 1] == 0:
+        if grid[i][j - 1] == 0 or j == 0:
             per += 1
     except IndexError:
         per += 1
     try:
-        if grid[i - 1][j] == 0:
+        if grid[i - 1][j] == 0 or i == 0:
             per += 1
     except IndexError:
         per += 1
