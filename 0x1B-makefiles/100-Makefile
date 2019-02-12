@@ -5,25 +5,17 @@ SRC = main.c holberton.c
 OBJ = $(patsubst %.c, %.o, $(SRC))
 NAME=holberton
 
-.PHONY: all
+.PHONY: all clean oclean fclean re
 
 all: $(OBJ) $(DEPS)
 	$(CC) $(OBJ) -o $(NAME)
 
-.PHONY: clean
-
 clean:
 	$(RM) *~ $(NAME)
-
-.PHONY: oclean
 
 oclean:
 	$(RM) $(OBJ)
 
-.PHONY: fclean
-
 fclean: clean oclean
-
-.PHONY: re
 
 re: oclean all
