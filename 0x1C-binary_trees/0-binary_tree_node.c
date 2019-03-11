@@ -10,12 +10,15 @@ binary_tree_t *binary_tree_node(binary_tree_t *parent, int value)
 {
 	binary_tree_t *retNode = NULL;
 
+	/*Allocating memory for node and checking for failure*/
 	retNode = malloc(sizeof(binary_tree_t));
 	if (!retNode)
 		return (retNode);
+	/*Initializing node with value and NULLs*/
 	retNode->n = value;
 	retNode->left = NULL;
 	retNode->right = NULL;
+	/*Depending on null position (left/right) add node*/
 	if (parent && !(parent->left))
 	{
 		retNode->parent = parent;
@@ -26,5 +29,6 @@ binary_tree_t *binary_tree_node(binary_tree_t *parent, int value)
 		retNode->parent = parent;
 		parent->right = retNode;
 	}
+	/*Returning created node*/
 	return (retNode);
 }
