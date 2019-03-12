@@ -18,6 +18,7 @@ binary_tree_t *binary_tree_node(binary_tree_t *parent, int value)
 	retNode->n = value;
 	retNode->left = NULL;
 	retNode->right = NULL;
+	retNode->parent = parent;
 	/*Depending on null position (left/right) add node*/
 	if (parent && !(parent->left))
 	{
