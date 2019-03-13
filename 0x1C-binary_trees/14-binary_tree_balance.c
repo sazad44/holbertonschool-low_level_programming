@@ -14,3 +14,8 @@ int binary_tree_balance(const binary_tree_t *tree)
 	hl = binary_tree_balance(tree->left) - 1;
 	return (hl - hr + 1);
 }
+
+/**
+ * binary_tree_height - find height of a binary tree
+ * @tree: a pointer to the root node of a binary tree
+ * Return: unsigned integer representing height of 
