@@ -11,6 +11,8 @@ bst_t *binary_trees_ancestor(const binary_tree_t *f, const binary_tree_t *s)
 	const bst_t *tmpNodef = NULL, *tmpNodes = NULL;
 	unsigned int depthf = 0, depths = 0, i = 0;
 
+	if (!f || !s)
+		return (NULL);
 	for (tmpNodef = f; tmpNodef->parent; tmpNodef = tmpNodef->parent)
 		depthf++;
 	for (tmpNodes = s; tmpNodes->parent; tmpNodes = tmpNodes->parent)
