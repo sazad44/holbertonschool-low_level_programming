@@ -47,8 +47,15 @@ size_t binary_tree_height(const binary_tree_t *tree)
  */
 unsigned char level_order_traverse(const binary_tree_t *tree, size_t level)
 {
+	size_t l = level, tHl = 0, tHr = 0;
+	unsigned char (*func)(const binary_tree_t *tree, size_t level);
+
 	if (!tree)
 		return (1);
+	tHl = binary_tree_height(tree->left);
+	tHr = binary_tree_height(tree->right);
+	if (!(tHl == tHr || tHl == (tHr - 1) || tHl == (tHr + 1)))
+		return (0);
 	if (level == 1)
 	{
 		if (!tree->left && tree->right)
@@ -60,5 +67,6 @@ unsigned char level_order_traverse(const binary_tree_t *tree, size_t level)
 		}
 		return (1);
 	}
-	return (level_order_traverse(tree->left, level - 1) && level_order_traverse(tree->right, level - 1));
+	func = &level_order_traverse;
+	return (func(tree->left, l - 1) && func(tree->right, l - 1));
 }
