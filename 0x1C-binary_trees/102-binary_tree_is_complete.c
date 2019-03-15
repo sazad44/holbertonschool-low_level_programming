@@ -65,8 +65,35 @@ unsigned char level_order_traverse(const binary_tree_t *tree, size_t level)
 			if (!tree->parent->left->right && tree->left)
 				return (0);
 		}
+		else if (!bt_middle_check(tree))
+			return (0);
 		return (1);
 	}
 	func = &level_order_traverse;
 	return (func(tree->left, l - 1) && func(tree->right, l - 1));
+}
+
+/**
+ * bt_middle_check - checks completeness of the two inner nodes of the tree
+ * @node: a pointer to the node to check for incompatibility
+ * Return: 1 for compatible 0 for compatible
+ */
+unsigned char bt_middle_check(const binary_tree_t *node)
+{
+	const binary_tree_t *travNodel = NULL, *travNoder = NULL;
+
+	if (!node || !node->parent || !node->left)
+		return (1);
+	for (travNodel = node; travNodel->parent; travNodel = travNodel->parent)
+		;
+	travNoder = travNodel->right;
+	travNodel = travNodel->left;
+	for (; travNoder && travNodel; travNoder = travNoder->left)
+	{
+		printf("LEFT: %d RIGHT: %d\n", travNodel->n, travNoder->n);
+		travNodel = travNodel->right;
+	}
+	if (!travNodel && travNoder)
+		return (0);
+	return (1);
 }
