@@ -53,6 +53,11 @@ unsigned char level_order_traverse(const binary_tree_t *tree, size_t level)
 	{
 		if (!tree->left && tree->right)
 			return (0);
+		else if (tree->parent && tree == tree->parent->right)
+		{
+			if (!tree->parent->left->right && tree->left)
+				return (0);
+		}
 		return (1);
 	}
 	return (level_order_traverse(tree->left, level - 1) && level_order_traverse(tree->right, level - 1));
