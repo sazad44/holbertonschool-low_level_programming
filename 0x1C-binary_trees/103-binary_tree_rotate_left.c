@@ -13,7 +13,6 @@ binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree)
 		return (tree);
 	tmpRoot = tree;
 	tree = tree->right;
-	printf("NEW: %d OLD: %d\n", tree->n, tmpRoot->n);
 	if (!tree->left)
 	{
 		tree->left = tmpRoot;
@@ -29,6 +28,5 @@ binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree)
 	}
 	tmpRoot->parent = tree;
 	tree->parent = NULL;
-	printf("NEW: %d OLD: %d\n", tree->n, tree->left->n);
 	return (tree);
 }
