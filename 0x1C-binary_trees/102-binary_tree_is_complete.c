@@ -7,33 +7,17 @@
  */
 int binary_tree_is_complete(const binary_tree_t *tree)
 {
-	size_t tHl = 0, tHr = 0, i = 0, status = 0;
+	size_t treeHeight = 0, i = 0;
 
 	if (!tree)
 		return (0);
-	tHl = binary_tree_height(tree->left);
-	tHr = binary_tree_height(tree->right);
-	if (tHl == tHr || tHl == (tHr - 1) || tHl == (tHr + 1))
+	treeHeight = binary_tree_height(tree);
+	for (i = 1; i <= treeHeight; i++)
 	{
-		if (tHl > tHr)
-			for (i = 1; i <= tHl; i++)
-			{
-				status = level_order_traverse(tree, i);
-				if (status == 0)
-					return (0);
-			}
-
-		else
-			for (i = 1; i <= tHr; i++)
-			{
-				status = level_order_traverse(tree, i);
-				if (status == 0)
-					return (0);
-			}
-		if (status)
-			return (1);
+		if (!level_order_traverse(tree, i))
+			return (0);
 	}
-	return (0);
+	return (1);
 }
 
 /**
@@ -47,8 +31,8 @@ size_t binary_tree_height(const binary_tree_t *tree)
 
 	if (!tree)
 		return (0);
-	binary_tree_height(tree->left);
-	binary_tree_height(tree->right);
+	hl = binary_tree_height(tree->left);
+	hr = binary_tree_height(tree->right);
 	if (hl > hr)
 		return (hl + 1);
 	else
@@ -63,16 +47,13 @@ size_t binary_tree_height(const binary_tree_t *tree)
  */
 unsigned char level_order_traverse(const binary_tree_t *tree, size_t level)
 {
-	unsigned char flag = 0;
-
 	if (!tree)
 		return (1);
 	if (level == 1)
 	{
-		if (!tree->left)
-			flag = 1;
-		else if (!tree->right)
-			flag = 1;
+		if (!tree->left && tree->right)
+			return (0);
+		return (1);
 	}
 	return (level_order_traverse(tree->left, level - 1) && level_order_traverse(tree->right, level - 1));
 }
