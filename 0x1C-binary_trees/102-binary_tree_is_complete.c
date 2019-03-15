@@ -89,10 +89,7 @@ unsigned char bt_middle_check(const binary_tree_t *node)
 	travNoder = travNodel->right;
 	travNodel = travNodel->left;
 	for (; travNoder && travNodel; travNoder = travNoder->left)
-	{
-		printf("LEFT: %d RIGHT: %d\n", travNodel->n, travNoder->n);
 		travNodel = travNodel->right;
-	}
 	if (!travNodel && travNoder)
 		return (0);
 	return (1);
