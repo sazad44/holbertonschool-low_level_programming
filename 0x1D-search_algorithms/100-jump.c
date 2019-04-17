@@ -11,9 +11,9 @@ int jump_search(int *array, size_t size, int value)
 {
 	size_t idx = 0, jStep = sqrt(size), jSum = 0;
 
-	if (!array || size == 0)
+	if (!array)
 		return (-1);
-	for (idx = 0; jStep <= size; jSum += jStep)
+	for (idx = 0; jSum < size && size != 0; jSum += jStep)
 	{
 		if (array[jSum] >= value || jSum > size)
 			break;
