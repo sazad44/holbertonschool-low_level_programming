@@ -17,7 +17,7 @@ int exponential_search(int *array, size_t size, int value)
 	{
 		if (array[eStep] > value)
 			break;
-		printf("Value checked array[%u] = [%d]\n", eStep, array[eStep]);
+		printf("Value checked array[%lu] = [%d]\n", eStep, array[eStep]);
 		idx = eStep;
 	}
 	if (size == 0)
@@ -27,12 +27,12 @@ int exponential_search(int *array, size_t size, int value)
 	}
 	if (eStep > size - 1)
 	{
-		printf("Value found between indexes [%u] and [%u]\n", idx, size - 1);
+		printf("Value found between indexes [%lu] and [%lu]\n", idx, size - 1);
 		return (bin_srch(array, idx, eStep - 1, value));
 	}
 	else
 	{
-		printf("Value found between indexes [%u] and [%u]\n", idx, eStep);
+		printf("Value found between indexes [%lu] and [%lu]\n", idx, eStep);
 		return (bin_srch(array, idx, eStep, value));
 	}
 	return (-1);
