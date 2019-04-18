@@ -35,7 +35,7 @@ int inp_srch(int *array, size_t low, size_t high, int value)
 	}
 	else if (pos < low)
 	{
-		printf("Value checked array[%lu] = %d\n", 0, array[0]);
+		printf("Value checked array[%d] = %d\n", 0, array[0]);
 		return (-1);
 	}
 	printf("Value checked array[%lu] = %d\n", pos, array[pos]);
