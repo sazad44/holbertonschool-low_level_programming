@@ -26,14 +26,15 @@ int inp_srch(int *array, size_t low, size_t high, int value)
 {
 	size_t pos = 0;
 
-	pos = low + (((double)(high - low) / (array[high] - array[low])) *
-		     (value - array[low]));
-	if (pos > high)
+	if (high != 0 || low != 0)
+		pos = low + (((double)(high - low) / (array[high] - array[low])) *
+			     (value - array[low]));
+	if (pos > high || array[pos] > array[high])
 	{
 		printf("Value checked array[%lu] is out of range\n", pos);
 		return (-1);
 	}
-	else if (pos < low)
+	else if (pos < low || array[pos] < array[low])
 	{
 		printf("Value checked array[%d] = %d\n", 0, array[0]);
 		return (-1);
@@ -43,7 +44,7 @@ int inp_srch(int *array, size_t low, size_t high, int value)
 		return (pos);
 	else if (pos == 0)
 		return (-1);
-	else if (array[pos] > value)
+	else if (array[pos] > value && pos > 0)
 		return (inp_srch(array, low, pos - 1, value));
 	return (inp_srch(array, pos + 1, high, value));
 }
