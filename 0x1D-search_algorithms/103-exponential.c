@@ -11,17 +11,31 @@ int exponential_search(int *array, size_t size, int value)
 {
 	size_t idx = 0, eStep = 1;
 
-	for (idx = 0; array[eStep] < value && eStep < size; eStep *= 2)
+	if (!array)
+		return (-1);
+	for (idx = 0; eStep < size && size > 2; eStep *= 2)
 	{
-		printf("Value checked array[%u] = [%d]\n", eStep, array[eStep]);
 		if (array[eStep] > value)
 			break;
+		printf("Value checked array[%u] = [%d]\n", eStep, array[eStep]);
 		idx = eStep;
 	}
+	if (size == 0)
+	{
+		printf("Value found between indexes [0] and [0]\n");
+		return (-1);
+	}
 	if (eStep > size - 1)
-		eStep = size - 1;
-	printf("Value found between indexes [%u] and [%u]\n", idx, eStep);
-	return (bin_srch(array, idx, eStep, value));
+	{
+		printf("Value found between indexes [%u] and [%u]\n", idx, size - 1);
+		return (bin_srch(array, idx, eStep - 1, value));
+	}
+	else
+	{
+		printf("Value found between indexes [%u] and [%u]\n", idx, eStep);
+		return (bin_srch(array, idx, eStep, value));
+	}
+	return (-1);
 }
 
 /**
