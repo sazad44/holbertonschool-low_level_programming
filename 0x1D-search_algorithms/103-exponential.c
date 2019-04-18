@@ -13,14 +13,14 @@ int exponential_search(int *array, size_t size, int value)
 
 	for (idx = 0; array[eStep] < value && eStep < size; eStep *= 2)
 	{
-		printf("Value checked array[%u] = [%d]\n", eStep, array[eStep]);
+		printf("Value checked array[%lu] = [%d]\n", eStep, array[eStep]);
 		if (array[eStep] > value)
 			break;
 		idx = eStep;
 	}
 	if (eStep > size - 1)
 		eStep = size - 1;
-	printf("Value found between indexes [%u] and [%u]\n", idx, eStep);
+	printf("Value found between indexes [%lu] and [%lu]\n", idx, eStep);
 	return (bin_srch(array, idx, eStep, value));
 }
 
