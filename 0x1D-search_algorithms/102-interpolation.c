@@ -12,10 +12,7 @@ int interpolation_search(int *array, size_t size, int value)
 	if (!array)
 		return (-1);
 	if (size == 0)
-	{
-		printf("Value checked array[0] is out of range\n");
-		return (-1);
-	}
+		size = 1;
 	return (inp_srch(array, 0, size - 1, value));
 }
 
