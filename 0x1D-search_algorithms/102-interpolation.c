@@ -11,6 +11,8 @@ int interpolation_search(int *array, size_t size, int value)
 {
 	if (!array)
 		return (-1);
+	if (size == 0)
+		size = 1;
 	return (inp_srch(array, 0, size - 1, value));
 }
 
