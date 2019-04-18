@@ -9,42 +9,38 @@
  */
 int interpolation_search(int *array, size_t size, int value)
 {
-	if (!array || size == 0)
+	size_t pos = 0, low = 0, high = size - 1;
+
+	if (!array)
 		return (-1);
-	return (inp_srch(array, 0, size - 1, value));
-}
-
-/**
- * inp_srch - interpolation search algorithm in use
- * @array: a pointer to the beginning of the array to be searched
- * @low: the low index of the array to be searched
- * @high: the high index of the array to be searched
- * @value: the value to be searched for
- * Return: the index of the value found or -1 if not found
- */
-int inp_srch(int *array, size_t low, size_t high, int value)
-{
-	size_t pos = 0;
-
-	if (high != 0 || low != 0)
-		pos = low + (((double)(high - low) / (array[high] - array[low])) *
-			     (value - array[low]));
-	if (pos > high || array[pos] > array[high])
+	else if (low == high)
 	{
+		printf("Value checked array[%lu] = [%d]\n", high, array[high]);
+		if (array[high] == value)
+			return (high);
+		else
+			return (-1);
+	}
+	pos = low + (((double)(high - low) / (array[high] - array[low]))
+		     * (value - array[low]));
+	while ((array[high] != array[low]) && (value >= array[low]) &&
+	       (value <= array[high]))
+	{
+		pos = low + (((double)(high - low) / (array[high] - array[low]))
+			     * (value - array[low]));
+		printf("Value checked array[%lu] = [%d]\n", pos, array[pos]);
+		if (array[pos] > value)
+			high = pos - 1;
+		else if (array[pos] < value)
+			low = pos + 1;
+		else if (array[pos] == value)
+			return (pos);
+	}
+	if (array[low] == value)
+		return (low);
+	else if (array[high] == value)
+		return (high);
+	else if (array[low] > value || array[high] < value)
 		printf("Value checked array[%lu] is out of range\n", pos);
-		return (-1);
-	}
-	else if (pos < low || array[pos] < array[low])
-	{
-		printf("Value checked array[%d] = %d\n", 0, array[0]);
-		return (-1);
-	}
-	printf("Value checked array[%lu] = %d\n", pos, array[pos]);
-	if (array[pos] == value)
-		return (pos);
-	else if (pos == 0)
-		return (-1);
-	else if (array[pos] > value && pos > 0)
-		return (inp_srch(array, low, pos - 1, value));
-	return (inp_srch(array, pos + 1, high, value));
+	return (-1);
 }
