@@ -40,6 +40,6 @@ int bin_srch(int *array, size_t start, size_t end, int value)
 	if (array[half] == value && array[half - 1] != value)
 		return (half);
 	else if (array[half] >= value)
-		return (bin_srch(array, start, half - 1, value));
+		return (bin_srch(array, start, half, value));
 	return (bin_srch(array, half + 1, end, value));
 }
