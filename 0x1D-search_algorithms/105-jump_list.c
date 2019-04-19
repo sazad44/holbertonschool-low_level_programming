@@ -9,6 +9,7 @@
  */
 listint_t *jump_list(listint_t *list, size_t size, int value)
 {
+	unsigned char a = 0;
 	listint_t *tmpList = NULL, *idxList = NULL;
 	size_t jStep = sqrt(size), jSum = 0, idx = 0;
 
@@ -16,19 +17,21 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 		return (NULL);
 	for (tmpList = list, jSum = 0; jSum < jStep; jSum++)
 		tmpList = tmpList->next;
-	for (idxList = list; jSum < size; idxList = idxList->next)
+	for (idxList = list; jSum < size; tmpList = tmpList->next, jSum++)
 	{
-		jSum++;
-		tmpList = tmpList->next;
-		if (jSum % jStep == 0)
-			printf("Value checked array [%lu] = [%d]\n", jSum, tmpList->n);
-		if ((jSum + jStep) >= size)
+		if (jSum % jStep == 0 || jSum == (size - 1))
+			printf("Value checked at index [%lu] = [%d]\n", jSum, tmpList->n);
+		if ((jSum >= size || tmpList->n > value) && (jSum % jStep == 0))
 			break;
+		idxList = idxList->next;
 	}
 	if (jSum > size - 1)
+	{
 		jSum = size - 1;
-	printf("Value found between indexes [%lu] and [%lu]\n", jSum - jStep, jSum);
-	for (idx = jSum - jStep; idx < jSum; idx++, idxList = idxList->next)
+		a = 1;
+	}
+	printf("Value found between indexes [%lu] and [%lu]\n", jSum - jStep + a, jSum);
+	for (idx = jSum - jStep + a; idx < jSum + a; idx++, idxList = idxList->next)
 	{
 		printf("Value checked at index [%lu] = [%d]\n", idx, idxList->n);
 		if (idxList->n == value)
