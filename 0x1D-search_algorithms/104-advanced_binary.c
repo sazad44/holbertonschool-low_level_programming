@@ -1,7 +1,7 @@
 #include "search_algos.h"
 
 /**
- * binary_search - search for a value with the binary search algorithm
+ * advanced_binary - search for a value with the binary search algorithm
  * @array: a pointer to the array to search
  * @size: size of the array to search
  * @value: the value to search for
@@ -9,7 +9,7 @@
  */
 int advanced_binary(int *array, size_t size, int value)
 {
-	if (!array)
+	if (!array || size == 0)
 		return (-1);
 	return (bin_srch(array, 0, size - 1, value));
 }
