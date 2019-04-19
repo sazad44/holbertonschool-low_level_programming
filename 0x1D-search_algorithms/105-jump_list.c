@@ -13,7 +13,7 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 	listint_t *tmpList = NULL, *idxList = NULL;
 	size_t jStep = sqrt(size), jSum = 0, idx = 0;
 
-	if (!list || size == 0)
+	if (!list)
 		return (NULL);
 	for (tmpList = list, jSum = 0; jSum < jStep; jSum++)
 		tmpList = tmpList->next;
