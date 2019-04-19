@@ -35,6 +35,8 @@ int bin_srch(int *array, size_t start, size_t end, int value)
 	else if (start == end)
 		return (-1);
 	half = start + ((end - start) / 2);
+	if (half == 0)
+		return (bin_srch(array, start, half, value));
 	if (array[half] == value && array[half - 1] != value)
 		return (half);
 	else if (array[half] >= value)
